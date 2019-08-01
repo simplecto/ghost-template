@@ -1,0 +1,20 @@
+routes:
+    /:
+      permalink: /{slug}/
+      template: index
+
+collections:
+
+  /blog/:
+    permalink: /blog/{slug}/
+    filter: tag:blog+tag:-projects
+  /projects/:
+    permalink: /project/{slug}/
+    filter: tag:project+tag:-blog
+    template: projects
+
+
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
