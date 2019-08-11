@@ -1,0 +1,78 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="">
+    <div class="">
+        {{> "site-nav"}}
+    </div>
+</header>
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="sidebar-author-title">About me</h6>
+                    <div class="circle-avatar-small sidebar-avatar" style="background-image: url({{asset 'images/sam-texas-headshot.png'}})"></div>
+                    <p class="sidebar-author-desc">
+                        Hello there -- My name is Sam Texas, and run this joint. I am currently a CTO in digital
+                        healthcare, but I have a lot of other interests and projects ongoing. This site is where I talk
+                        about pretty much anything worth sharing.
+                    </p>
+                    <a class="sidebar-author-link" href="/about/">Learn more</a>
+                </div>
+
+                <div class="col-lg-10 col-md-8">
+                    <h2 class="page-title">About</h2>
+                    <p class="page-text">
+                        SimpleCTO is a way for me to better organize my thoughts, share some insights, and publicly air
+                        some questions to anyone passing by. Now, I know what you are thinking:<br><br>
+                        We need another blog like I need another asshole.<br>
+
+                        – Yours truly<br><br>
+
+                        But hear me out. Because I am not your typical asshole. <br><br>
+
+                        You see, this is not my first rodeo. I’ve been in the game for a while which means there are
+                        some scars to go along with my successes. I’ve had the pleasure and pain of working with some
+                        colorful characters, in colorful places, and in some colorful situations. The names have been
+                        changed to protect the sinners, the saints, and those still in purgatory. Maybe by sharing them
+                        we can all take something away. Either way, I hope you get a good laugh out of it. <br><br>
+
+                        So, who the hell am I? <br><br>
+
+                        Good question. Currently I am CTO at NuvoAir where I lead a growing team of data-scientists,
+                        mobile, and back-end developers to deliver digital health solutions in the respiratory space.
+                        <br><br>
+                        I’ve been fortunate enough in my career to have the freedom to explore new ideas and
+                        opportunities across e-commerce, advertising, startups, and healthcare. In that time I was a
+                        developer, copywriter, manager, and CTO (among other fill-in roles). <br><br>
+                        If you are really interested in chase me on LinkedIn.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</main>
+
+{{/post}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+$(function() {
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+});
+</script>
+{{/contentFor}}

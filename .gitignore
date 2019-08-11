@@ -1,0 +1,3 @@
+build/*
+settings.mk
+ghostdata/

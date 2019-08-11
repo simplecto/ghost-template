@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  ghost:
+    image: ghost:2-alpine
+    container_name: ghost
+    restart: unless-stopped
+    volumes:
+      - "./ghostdata:/var/lib/ghost/content"
+      - "./src:/var/lib/ghost/content/themes/simplecto"
+
+    environment:
+      url: http://localhost:8080
+
+    ports:
+      - "8080:2368"

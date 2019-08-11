@@ -1,0 +1,58 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="">
+    <div class="">
+        {{> "site-nav"}}
+    </div>
+</header>
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+<main role="main" class="container">
+    <br><br>
+
+    <div class="row">
+
+        <div class="col-12">
+            <h2 class="page-title">Contact</h2>
+            <form class="contact-form" action="contact-sent.html" method="post">
+                <div class="row">
+                        <div class="col-md-6">
+                            <input class="contact-input" type="text" name="contact-name" id="contact-name">
+                            <label class="contact-label" for="contact-name">Your name</label>
+
+                            <input class="contact-input" type="email" name="contact-email" id="contact-email">
+                            <label class="contact-label" for="contact-email">Email</label>
+
+                            <input class="contact-input" type="text" name="contact-subject" id="contact-subject">
+                            <label class="contact-label" for="contact-subject">Subject</label>
+                        </div>
+                        <div class="col-12">
+                            <label class="contact-label contact-label-above" for="contact-subject">What would you like to say?</label>
+                            <textarea class="contact-message" name="contact-message" rows="8" cols="80"></textarea>
+                            <button type="submit" class="contact-submit">Send</button>
+                        </div>
+                </div>
+            </form>
+
+        </div>
+        <br>
+    </div>
+
+</main>
+
+{{/post}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+$(function() {
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+});
+</script>
+{{/contentFor}}
